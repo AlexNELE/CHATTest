@@ -1,0 +1,89 @@
+<Window x:Class="FileRelay.UI.Windows.SourceEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:windows="clr-namespace:FileRelay.UI.Windows"
+        mc:Ignorable="d"
+        Title="Quelle konfigurieren" Height="600" Width="800">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" VerticalAlignment="Center" Margin="0,0,8,0" />
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Source.Name, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Pfad:" VerticalAlignment="Center" Margin="0,8,8,0" />
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="0,8,0,0" Text="{Binding Source.Path, UpdateSourceTrigger=PropertyChanged}" />
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,8,0,0">
+                <CheckBox Content="Aktiv" IsChecked="{Binding Source.Enabled}" Margin="0,0,16,0" />
+                <CheckBox Content="Rekursiv" IsChecked="{Binding Source.Recursive}" Margin="0,0,16,0" />
+                <CheckBox Content="Nach Kopie löschen" IsChecked="{Binding Source.DeleteAfterCopy}" Margin="0,0,16,0" />
+                <CheckBox Content="Papierkorb verwenden" IsChecked="{Binding Source.UseRecycleBin}" />
+            </StackPanel>
+        </Grid>
+
+        <GroupBox Grid.Row="1" Header="Ziele">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,8">
+                    <Button Content="Ziel hinzufügen" Command="{Binding AddTargetCommand}" />
+                    <Button Content="Ziel entfernen" Command="{Binding RemoveTargetCommand}" Margin="8,0,0,0" />
+                </StackPanel>
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding Source.Targets}"
+                          SelectedItem="{Binding SelectedTarget}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          Margin="0,8,0,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                        <DataGridTextColumn Header="Zielpfad" Binding="{Binding DestinationPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="2*" />
+                        <DataGridTemplateColumn Header="Credential" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding DataContext.Credentials, RelativeSource={RelativeSource AncestorType=Window}}"
+                                              DisplayMemberPath="DisplayName"
+                                              SelectedValuePath="Id"
+                                              SelectedValue="{Binding CredentialId, Mode=TwoWay}"
+                                              Width="200" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridComboBoxColumn Header="Konflikt" SelectedItemBinding="{Binding ConflictMode, Mode=TwoWay}" ItemsSource="{x:Static windows:ConflictModeValues.All}" Width="Auto" />
+                        <DataGridCheckBoxColumn Header="Checksum" Binding="{Binding VerifyChecksum}" Width="Auto" />
+                        <DataGridTextColumn Header="Max Parallel" Binding="{Binding MaxParallelTransfers, Mode=TwoWay}" Width="Auto" />
+                        <DataGridTextColumn Header="Max Retries" Binding="{Binding MaxRetries, Mode=TwoWay}" Width="Auto" />
+                        <DataGridTextColumn Header="Rate (pro Min.)" Binding="{Binding MaxFilesPerMinute, Mode=TwoWay}" Width="Auto" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button Content="Abbrechen" IsCancel="True" Width="120" Margin="0,0,8,0" />
+            <Button Content="Speichern" IsDefault="True" Width="120" Click="OnSaveClick" />
+        </StackPanel>
+    </Grid>
+</Window>

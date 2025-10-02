@@ -1,0 +1,47 @@
+{
+  "$schema": "https://example.com/filrelay/config.schema.json",
+  "options": {
+    "defaultMaxParallelTransfers": 8,
+    "defaultRetryCount": 3,
+    "initialRetryDelay": "00:00:05",
+    "logDirectory": "%ProgramData%/FileRelay/logs",
+    "startMinimized": true,
+    "startWithWindows": true,
+    "enableServiceMode": true,
+    "managementEndpoint": "net.pipe://localhost/FileRelay"
+  },
+  "credentials": [
+    {
+      "id": "11111111-1111-1111-1111-111111111111",
+      "displayName": "DOMAIN\\filesvc",
+      "domain": "DOMAIN",
+      "username": "filesvc",
+      "protectedSecret": "<DPAPI-BLOB>",
+      "lastRotated": "2023-01-01T00:00:00Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "22222222-2222-2222-2222-222222222222",
+      "name": "Scanner Eingang",
+      "path": "C:/Scanner/Out",
+      "enabled": true,
+      "recursive": true,
+      "includeFilters": ["*.pdf"],
+      "excludeFilters": ["regex:.*_draft\\.pdf"],
+      "deleteAfterCopy": false,
+      "targets": [
+        {
+          "id": "33333333-3333-3333-3333-333333333333",
+          "name": "Dokumentenmanagement",
+          "destinationPath": "\\\\fileserver\\eingang",
+          "conflictMode": "Replace",
+          "credentialId": "11111111-1111-1111-1111-111111111111",
+          "verifyChecksum": true,
+          "subfolderTemplate": "{date:yyyyMMdd}",
+          "maxParallelTransfers": 4
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+<Window x:Class="FileRelay.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:FileRelay.UI.ViewModels"
+        mc:Ignorable="d"
+        Title="FileRelay" Height="720" Width="1200">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ToolBarTray Grid.Row="0">
+            <ToolBar>
+                <Button Content="Neu" Command="{Binding AddSourceCommand}" />
+                <Button Content="Bearbeiten" Command="{Binding EditSourceCommand}" />
+                <Button Content="Entfernen" Command="{Binding RemoveSourceCommand}" />
+                <Separator />
+                <Button Content="Aktualisieren" Command="{Binding RefreshCommand}" />
+                <Separator />
+                <Button Content="Export Logs" Command="{Binding ExportLogsCommand}" />
+            </ToolBar>
+        </ToolBarTray>
+
+        <Grid Grid.Row="1" Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Überwachte Ordner" Margin="4">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <DataGrid ItemsSource="{Binding Sources}" SelectedItem="{Binding SelectedSource}" AutoGenerateColumns="False" IsReadOnly="True" Margin="4">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                            <DataGridTextColumn Header="Pfad" Binding="{Binding Path}" Width="2*" />
+                            <DataGridCheckBoxColumn Header="Aktiv" Binding="{Binding Enabled}" Width="Auto" />
+                            <DataGridTextColumn Header="Letzte Aktivität" Binding="{Binding LastActivityUtc}" Width="*" />
+                            <DataGridTextColumn Header="Queue" Binding="{Binding PendingTransfers}" Width="Auto" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="4">
+                        <Button Content="Pausieren" Command="{Binding PauseSourceCommand}" />
+                        <Button Content="Fortsetzen" Command="{Binding ResumeSourceCommand}" />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="Zielkonfiguration" Grid.Column="1" Margin="4">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Vertical" Margin="8">
+                        <TextBlock Text="Rekursiv:" />
+                        <CheckBox IsChecked="{Binding SelectedSource.Recursive}" />
+                        <TextBlock Text="Löschen nach Kopie:" />
+                        <CheckBox IsChecked="{Binding SelectedSource.DeleteAfterCopy}" />
+                        <TextBlock Text="Verwendung Papierkorb:" />
+                        <CheckBox IsChecked="{Binding SelectedSource.UseRecycleBin}" />
+                    </StackPanel>
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding SelectedSource.Targets}" AutoGenerateColumns="False" Margin="4">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                            <DataGridTextColumn Header="Zielpfad" Binding="{Binding DestinationPath}" Width="2*" />
+                            <DataGridTextColumn Header="Credentials" Binding="{Binding CredentialName}" Width="*" />
+                            <DataGridTextColumn Header="Konflikt" Binding="{Binding ConflictMode}" Width="Auto" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <GroupBox Header="Aktivität" Grid.Row="2" Margin="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="4">
+                    <TextBlock Text="Filter:" VerticalAlignment="Center" />
+                    <ComboBox ItemsSource="{Binding LogLevelFilters}" SelectedItem="{Binding SelectedLogLevelFilter}" Width="150" Margin="8,0" />
+                </StackPanel>
+                <ListView Grid.Row="1" ItemsSource="{Binding LogEntries}" Margin="4">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Zeit" DisplayMemberBinding="{Binding Timestamp}" Width="180" />
+                            <GridViewColumn Header="Level" DisplayMemberBinding="{Binding Level}" Width="80" />
+                            <GridViewColumn Header="Nachricht" DisplayMemberBinding="{Binding Message}" Width="700" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

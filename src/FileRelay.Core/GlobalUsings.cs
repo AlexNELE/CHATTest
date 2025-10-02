@@ -1,0 +1,11 @@
+global using System.Collections.Concurrent;
+global using System.Collections.ObjectModel;
+global using System.Diagnostics;
+global using System.IO;
+global using System.IO.Abstractions;
+global using System.Runtime.InteropServices;
+global using System.Security;
+global using System.Security.Cryptography;
+global using System.Security.Principal;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
