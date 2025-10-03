@@ -71,7 +71,11 @@ public sealed class ConfigurationService
 
     public async Task SaveAsync(AppConfiguration configuration)
     {
-        Directory.CreateDirectory(Path.GetDirectoryName(_configurationFile)!);
+        var directory = Path.GetDirectoryName(_configurationFile);
+        if (!string.IsNullOrEmpty(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
         await using var stream = File.Create(_configurationFile);
         await JsonSerializer.SerializeAsync(stream, configuration, _serializerOptions).ConfigureAwait(false);
         lock (_sync)
