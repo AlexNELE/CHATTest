@@ -53,7 +53,7 @@ namespace FileRelay.UI.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/FileRelay.UI;component/windows/sourceeditorwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/FileRelay.UI;V1.0.0.0;component/windows/sourceeditorwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\SourceEditorWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

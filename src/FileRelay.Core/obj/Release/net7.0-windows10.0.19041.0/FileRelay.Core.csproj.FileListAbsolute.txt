@@ -1,0 +1,15 @@
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\bin\Release\net7.0-windows10.0.19041.0\FileRelay.Core.deps.json
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\bin\Release\net7.0-windows10.0.19041.0\FileRelay.Core.dll
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\bin\Release\net7.0-windows10.0.19041.0\FileRelay.Core.pdb
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\bin\Release\net7.0-windows10.0.19041.0\FileRelay.Core.xml
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.csproj.AssemblyReference.cache
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.AssemblyInfoInputs.cache
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.AssemblyInfo.cs
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.csproj.CoreCompileInputs.cache
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.sourcelink.json
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.dll
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\refint\FileRelay.Core.dll
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.xml
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\FileRelay.Core.pdb
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.Core\obj\Release\net7.0-windows10.0.19041.0\ref\FileRelay.Core.dll

@@ -148,6 +148,16 @@ public sealed class CopyWorker
 
             await CopyFileAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
 
+
+            var destinationPath = ResolveDestinationPath(request);
+            var destinationDirectory = _fileSystem.Path.GetDirectoryName(destinationPath)!;
+            _fileSystem.Directory.CreateDirectory(destinationDirectory);
+
+            var finalPath = HandleConflict(destinationPath, request.Target.ConflictMode);
+            var tempFile = _fileSystem.Path.Combine(destinationDirectory, $".{_fileSystem.Path.GetFileName(finalPath)}.{Guid.NewGuid():N}.tmp");
+
+            await CopyFileAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
+
             if (request.Target.VerifyChecksum)
             {
                 await VerifyChecksumAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
@@ -368,6 +378,7 @@ public sealed class CopyWorker
         }
 
         if (LocalHostNames.Value.Contains(host))
+        if (IPAddress.TryParse(host, out var address) && IPAddress.IsLoopback(address))
         {
             return true;
         }
@@ -390,6 +401,10 @@ public sealed class CopyWorker
     private static bool IsLocalAddress(IPAddress address)
     {
         if (IPAddress.IsLoopback(address))
+        var machineName = Environment.MachineName;
+        if (!string.IsNullOrWhiteSpace(machineName) &&
+            (host.Equals(machineName, StringComparison.OrdinalIgnoreCase) ||
+             host.StartsWith(machineName + ".", StringComparison.OrdinalIgnoreCase)))
         {
             return true;
         }
@@ -486,5 +501,6 @@ public sealed class CopyWorker
         result.Add(IPAddress.IPv6Loopback);
 
         return result;
+        return false;
     }
 }
