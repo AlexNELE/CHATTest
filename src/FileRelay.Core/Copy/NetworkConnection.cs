@@ -4,9 +4,6 @@ using FileRelay.Core.Credentials;
 
 namespace FileRelay.Core.Copy;
 
-/// <summary>
-/// Establishes an authenticated network connection for UNC paths using explicit credentials.
-/// </summary>
 internal sealed class NetworkConnection : IDisposable
 {
     private readonly string _networkPath;
@@ -44,7 +41,21 @@ internal sealed class NetworkConnection : IDisposable
         }
         finally
         {
-            password.AsSpan().Clear();
+            // Passwort-Zeichenfolge überschreiben, um sie aus dem Speicher zu entfernen
+            if (password != null)
+            {
+                OverwriteString(password);
+            }
+        }
+    }
+
+    private static void OverwriteString(string str)
+    {
+        // Diese Methode benötigt kein 'unsafe'
+        var arr = str.ToCharArray();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            arr[i] = '\0';
         }
     }
 

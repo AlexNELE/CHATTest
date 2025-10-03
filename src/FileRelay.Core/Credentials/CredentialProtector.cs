@@ -1,5 +1,8 @@
 using System;
 using System.Text;
+using System.Security.Cryptography; // Hinzugefügt für ProtectedData und DataProtectionScope
+using System.Security; // Für SecureString
+// using static System.Security.Cryptography.ProtectedData; // Entfernt, da nicht benötigt
 
 namespace FileRelay.Core.Credentials;
 

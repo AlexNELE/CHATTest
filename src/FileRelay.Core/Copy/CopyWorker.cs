@@ -222,8 +222,8 @@ public sealed class CopyWorker
 
     private void VerifySize(string sourceFile, string tempFile)
     {
-        var sourceInfo = _fileSystem.FileInfo.New(sourceFile);
-        var targetInfo = _fileSystem.FileInfo.New(tempFile);
+        var sourceInfo = _fileSystem.FileInfo.FromFileName(sourceFile);
+        var targetInfo = _fileSystem.FileInfo.FromFileName(tempFile);
         if (sourceInfo.Length != targetInfo.Length)
         {
             throw new IOException($"Size mismatch between {sourceFile} and {tempFile}");

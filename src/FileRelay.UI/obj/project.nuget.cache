@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "dgSpecHash": "TPMXLINH3kc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.UI\\FileRelay.UI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aneu0\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.0\\communitytoolkit.mvvm.8.2.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\h.notifyicon\\1.0.18\\h.notifyicon.1.0.18.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\hardcodet.notifyicon.wpf.netcore\\1.1.5\\hardcodet.notifyicon.wpf.netcore.1.1.5.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.0\\microsoft.extensions.configuration.binder.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.0.0\\microsoft.extensions.dependencymodel.3.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\7.0.0\\microsoft.extensions.fileproviders.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\7.0.0\\microsoft.extensions.hosting.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.logging\\2.0.0\\microsoft.extensions.logging.2.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\7.0.0\\microsoft.extensions.options.configurationextensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\serilog\\2.12.0\\serilog.2.12.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\serilog.extensions.logging\\3.1.0\\serilog.extensions.logging.3.1.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\serilog.settings.configuration\\3.4.0\\serilog.settings.configuration.3.4.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\serilog.sinks.async\\1.5.0\\serilog.sinks.async.1.5.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\system.io.abstractions\\17.0.24\\system.io.abstractions.17.0.24.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.9\\system.security.cryptography.protecteddata.9.0.9.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512",
+    "C:\\Users\\aneu0\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.55\\microsoft.windows.sdk.net.ref.10.0.19041.55.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "message": "FileRelay.UI hängt von Hardcodet.NotifyIcon.Wpf.NetCore (>= 1.1.0) ab, aber Hardcodet.NotifyIcon.Wpf.NetCore 1.1.0 wurde nicht gefunden. Hardcodet.NotifyIcon.Wpf.NetCore 1.1.5 wurde stattdessen aufgelöst.",
+      "projectPath": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.UI\\FileRelay.UI.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.UI\\FileRelay.UI.csproj",
+      "libraryId": "Hardcodet.NotifyIcon.Wpf.NetCore",
+      "targetGraphs": [
+        "net7.0-windows10.0.19041"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.IO.Abstractions;
+using System.Threading;
 using System.Threading.Tasks;
 using FileRelay.Core.Watchers;
 using Xunit;
@@ -19,7 +20,7 @@ public class FileLockDetectorTests
         await File.WriteAllTextAsync(tempPath, "test");
 
         using var stream = File.Open(tempPath, FileMode.Open, FileAccess.Read, FileShare.None);
-        var waitTask = detector.WaitForFileReadyAsync(tempPath, TimeSpan.FromSeconds(2), CancellationToken.None);
+        var waitTask = detector.WaitForFileReadyAsync(tempPath, TimeSpan.FromSeconds(2), System.Threading.CancellationToken.None);
         await Task.Delay(200);
         stream.Dispose();
 
