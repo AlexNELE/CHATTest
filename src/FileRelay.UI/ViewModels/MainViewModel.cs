@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -27,6 +28,7 @@ public partial class MainViewModel : ObservableObject
     {
         _managementClient = managementClient;
         Sources = new ObservableCollection<SourceItemViewModel>();
+        Credentials = new ObservableCollection<CredentialReference>();
         LogEntries = new ObservableCollection<LogEntryViewModel>();
         LogLevelFilters = new ObservableCollection<string>(new[] { "Alle", "Info", "Warn", "Error" });
         SelectedLogLevelFilter = LogLevelFilters.First();
@@ -34,6 +36,8 @@ public partial class MainViewModel : ObservableObject
     }
 
     public ObservableCollection<SourceItemViewModel> Sources { get; }
+
+    public ObservableCollection<CredentialReference> Credentials { get; }
 
     [ObservableProperty]
     private SourceItemViewModel? selectedSource;
@@ -58,6 +62,7 @@ public partial class MainViewModel : ObservableObject
         var dispatcher = Application.Current?.Dispatcher;
         if (dispatcher?.CheckAccess() == true)
         {
+            UpdateCredentialsCollection(_configuration.Credentials);
             UpdateSources(status);
             LoadLogs();
         }
@@ -65,6 +70,7 @@ public partial class MainViewModel : ObservableObject
         {
             dispatcher?.Invoke(() =>
             {
+                UpdateCredentialsCollection(_configuration.Credentials);
                 UpdateSources(status);
                 LoadLogs();
             });
@@ -154,6 +160,24 @@ public partial class MainViewModel : ObservableObject
 
         SelectedSource.Enabled = true;
         UpdateConfigurationFromViewModel(SelectedSource);
+        await PersistConfigurationAsync().ConfigureAwait(false);
+        await RefreshAsync().ConfigureAwait(false);
+    }
+
+    [RelayCommand]
+    private async Task ManageCredentialsAsync()
+    {
+        var dialogVm = new Windows.ManageCredentialsViewModel(_configuration.Credentials);
+        var dialog = new Windows.ManageCredentialsWindow { DataContext = dialogVm };
+        var result = dialog.ShowDialog();
+        if (result != true)
+        {
+            return;
+        }
+
+        _configuration.Credentials = dialogVm.GetCredentials().ToList();
+        UpdateCredentialsCollection(_configuration.Credentials);
+        UpdateTargetCredentialNames();
         await PersistConfigurationAsync().ConfigureAwait(false);
         await RefreshAsync().ConfigureAwait(false);
     }
@@ -281,7 +305,7 @@ public partial class MainViewModel : ObservableObject
     private bool ShowSourceDialog(SourceItemViewModel viewModel)
     {
         var clone = viewModel.Clone();
-        var dialogVm = new Windows.SourceEditorViewModel(clone, _configuration.Credentials);
+        var dialogVm = new Windows.SourceEditorViewModel(clone, Credentials);
         var dialog = new Windows.SourceEditorWindow { DataContext = dialogVm };
         var result = dialog.ShowDialog();
         if (result == true)
@@ -305,6 +329,30 @@ public partial class MainViewModel : ObservableObject
         {
             var index = _configuration.Sources.IndexOf(existing);
             _configuration.Sources[index] = updated;
+        }
+    }
+
+    private void UpdateCredentialsCollection(IEnumerable<CredentialReference> credentials)
+    {
+        Credentials.Clear();
+        foreach (var credential in credentials)
+        {
+            Credentials.Add(credential);
+        }
+    }
+
+    private void UpdateTargetCredentialNames()
+    {
+        var credentialNames = _configuration.Credentials.ToDictionary(c => c.Id, c => $"{c.Domain}\\{c.Username}");
+        foreach (var source in Sources)
+        {
+            foreach (var target in source.Targets)
+            {
+                if (credentialNames.TryGetValue(target.CredentialId, out var name))
+                {
+                    target.CredentialName = name;
+                }
+            }
         }
     }
 
