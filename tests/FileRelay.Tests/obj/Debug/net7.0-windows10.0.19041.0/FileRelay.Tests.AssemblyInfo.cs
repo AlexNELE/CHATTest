@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileRelay.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a732e7629e45de90d0a5860ad18e5c5464c05160")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e2f1ca7edc281f93f490aefdc628aad0cb3fb25")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileRelay.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileRelay.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

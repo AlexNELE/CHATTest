@@ -52,3 +52,7 @@ C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7
 C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7.0-windows10.0.19041.0\FileRelay.UI.pdb
 C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7.0-windows10.0.19041.0\FileRelay.UI.genruntimeconfig.cache
 C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7.0-windows10.0.19041.0\ref\FileRelay.UI.dll
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7.0-windows10.0.19041.0\Windows\CredentialEditorWindow.baml
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7.0-windows10.0.19041.0\Windows\ManageCredentialsWindow.baml
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7.0-windows10.0.19041.0\Windows\CredentialEditorWindow.g.cs
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7.0-windows10.0.19041.0\Windows\ManageCredentialsWindow.g.cs

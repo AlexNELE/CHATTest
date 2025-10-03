@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "src\\FileRelay.UI\\Services\\ManagementClient.cs",
               "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.UI\\Services\\ManagementClient.cs",
               "RelativeToolTip": "src\\FileRelay.UI\\Services\\ManagementClient.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAlwDgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACsAAAAAAAAAAAAawDQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T09:40:55.083Z",
               "EditorCaption": ""
@@ -87,8 +87,7 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\CopyQueueTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:27:03.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:27:03.061Z"
             },
             {
               "$type": "Document",
