@@ -1,0 +1,1 @@
+C:\Users\aneu0\source\repos\Filewatcher\CHATTest\src\FileRelay.UI\obj\Debug\net7.0-windows10.0.19041.0\FileRelay.UI.csproj.AssemblyReference.cache

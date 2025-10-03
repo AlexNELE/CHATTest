@@ -46,8 +46,7 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\RetryPolicyTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:28:10.121Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:28:10.121Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\FileLockDetectorTests.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAlwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:27:13.829Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:27:13.829Z"
             },
             {
               "$type": "Document",
@@ -70,7 +68,7 @@
               "RelativeDocumentMoniker": "tests\\FileRelay.Tests\\CopyQueueTests.cs",
               "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\tests\\FileRelay.Tests\\CopyQueueTests.cs",
               "RelativeToolTip": "tests\\FileRelay.Tests\\CopyQueueTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAAB0AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T08:27:03.061Z",
               "EditorCaption": ""
@@ -85,8 +83,7 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Credentials\\CredentialProtector.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:23:48.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:23:48.235Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Copy\\NetworkConnection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:23:06.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:23:06.452Z"
             },
             {
               "$type": "Document",
@@ -111,8 +107,7 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Copy\\CopyWorker.cs",
               "ViewState": "AgIAANMAAAAAAAAAAAAAwOAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:21:57.011Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:21:57.011Z"
             }
           ]
         }

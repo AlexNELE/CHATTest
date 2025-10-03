@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileRelay.ServiceHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69169e9171c2ca230d801ea22db8e68d2cb6b65a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1074ef118097a43fd7dd244bda61a53acf1cb5b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileRelay.ServiceHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileRelay.ServiceHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
