@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FileRelay.Core</name>
+    </assembly>
+    <members>
+        <member name="T:FileRelay.Core.Configuration.AppConfiguration">
+            <summary>
+            Root configuration container persisted to disk.
+            </summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.AppConfiguration.Options">
+            <summary>Gets or sets global options.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.AppConfiguration.Sources">
+            <summary>Collection of source directories that are monitored.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.AppConfiguration.Credentials">
+            <summary>Collection of credential definitions referenced by targets.</summary>
+        </member>
+        <member name="T:FileRelay.Core.Configuration.GlobalOptions">
+            <summary>
+            Defines application wide defaults.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Configuration.CredentialReference">
+            <summary>
+            Provides metadata for domain credentials stored in the credential vault.
+            </summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.CredentialReference.ProtectedSecret">
+            <summary>Encrypted payload containing the password.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.CredentialReference.LastRotated">
+            <summary>Timestamp of the last credential update.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.CredentialReference.RotationInterval">
+            <summary>Optional rotation interval used to notify administrators.</summary>
+        </member>
+        <member name="T:FileRelay.Core.Configuration.ConfigurationService">
+            <summary>
+            Manages persistence of the application configuration.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Configuration.SourceConfiguration">
+            <summary>
+            Describes a monitored source directory including file filters and copy targets.
+            </summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.Id">
+            <summary>Internal identifier for cross references.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.Name">
+            <summary>Display name used in the UI and logs.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.Path">
+            <summary>Absolute path of the directory to monitor.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.Enabled">
+            <summary>Indicates whether the watcher is enabled.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.Recursive">
+            <summary>Determines if sub-directories are monitored as well.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.IncludeFilters">
+            <summary>Optional include filter expressions (supports wildcards and regex markers).</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.ExcludeFilters">
+            <summary>Optional exclude filter expressions (supports wildcards and regex markers).</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.Targets">
+            <summary>Collection of copy targets the detected files should be transferred to.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.DeleteAfterCopy">
+            <summary>Specifies whether files should be removed after successful copy.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.UseRecycleBin">
+            <summary>Specifies whether files are moved to recycle bin when deletion is enabled.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.MaxParallelTransfers">
+            <summary>Optional concurrency override for this source.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.SourceConfiguration.MaxFilesPerMinute">
+            <summary>Optional rate limit (files per minute) for flood protection.</summary>
+        </member>
+        <member name="T:FileRelay.Core.Configuration.TargetConfiguration">
+            <summary>
+            Represents a destination path and options for copy operations.
+            </summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.Id">
+            <summary>Internal identifier for referencing credentials.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.Name">
+            <summary>Friendly name of the destination used in UI.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.DestinationPath">
+            <summary>UNC or mapped path to copy files to.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.SubfolderTemplate">
+            <summary>Optional folder template appended to <see cref="P:FileRelay.Core.Configuration.TargetConfiguration.DestinationPath"/>.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.ConflictMode">
+            <summary>Defines how conflicts should be handled.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.MaxParallelTransfers">
+            <summary>Controls the maximum concurrency for this target.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.CredentialId">
+            <summary>Identifier of the credentials associated with this target.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.MaxRetries">
+            <summary>Number of retries for this target (overrides global value).</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.MaxFilesPerMinute">
+            <summary>Optional rate limit (files per minute) for this target.</summary>
+        </member>
+        <member name="P:FileRelay.Core.Configuration.TargetConfiguration.VerifyChecksum">
+            <summary>True if checksum verification is enabled for this target.</summary>
+        </member>
+        <member name="T:FileRelay.Core.Configuration.ConflictMode">
+            <summary>
+            Defines how file conflicts are handled.
+            </summary>
+        </member>
+        <member name="F:FileRelay.Core.Configuration.ConflictMode.Replace">
+            <summary>Existing files are replaced.</summary>
+        </member>
+        <member name="F:FileRelay.Core.Configuration.ConflictMode.Version">
+            <summary>Existing files are preserved and new file is renamed with timestamp suffix.</summary>
+        </member>
+        <member name="F:FileRelay.Core.Configuration.ConflictMode.Ignore">
+            <summary>Existing files block the transfer and the file is skipped.</summary>
+        </member>
+        <member name="T:FileRelay.Core.Copy.CopyWorker">
+            <summary>
+            Processes queued copy requests using impersonation and verification.
+            </summary>
+        </member>
+        <member name="M:FileRelay.Core.Copy.CopyWorker.RunAsync(System.Threading.CancellationToken)">
+            <summary>
+            Starts processing queue items until cancellation is requested.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Copy.RetryPolicy">
+            <summary>
+            Describes retry semantics for copy operations.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Copy.TransferResult">
+            <summary>
+            Represents the outcome of a copy attempt.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Credentials.CredentialProtector">
+            <summary>
+            Provides DPAPI based encryption helpers for credential persistence.
+            </summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialProtector.Protect(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Protects the provided secret using the current user's DPAPI scope.
+            </summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialProtector.UnprotectToSecureString(System.String)">
+            <summary>
+            Decrypts the provided DPAPI blob.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Credentials.CredentialStore">
+            <summary>
+            Thread-safe in-memory representation of credential references backed by the configuration file.
+            </summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialStore.List">
+            <summary>Returns all known credential references.</summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialStore.Get(System.Guid)">
+            <summary>Retrieves a specific reference.</summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialStore.Upsert(System.String,System.String,System.String,System.Security.SecureString)">
+            <summary>Creates or updates a credential reference.</summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialStore.Rotate(System.Guid,System.Security.SecureString)">
+            <summary>Updates the stored secret for an existing credential.</summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialStore.Remove(System.Guid)">
+            <summary>Removes credentials from the store.</summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialStore.Reset(System.Collections.Generic.IEnumerable{FileRelay.Core.Configuration.CredentialReference})">
+            <summary>Replaces the internal cache with the provided credentials.</summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialStore.TryGetDomainCredential(System.Guid)">
+            <summary>Builds a <see cref="T:FileRelay.Core.Credentials.DomainCredential"/> for impersonation.</summary>
+        </member>
+        <member name="M:FileRelay.Core.Credentials.CredentialStore.NeedsRotation(System.Guid,System.DateTimeOffset)">
+            <summary>Determines whether the credential is due for rotation.</summary>
+        </member>
+        <member name="T:FileRelay.Core.Credentials.DomainCredential">
+            <summary>
+            Represents a domain credential including decrypted password.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Logging.LogConfigurator">
+            <summary>
+            Provides Serilog configuration for both service and UI layers.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Messaging.RuntimeStatus">
+            <summary>
+            Represents a snapshot of the running system used by the UI.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Messaging.ConfigurationUpdate">
+            <summary>
+            Request contract for configuration updates from the UI.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Messaging.NamedPipeManagementServer">
+            <summary>
+            Lightweight JSON-over-named-pipes management endpoint.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Queue.CopyQueue">
+            <summary>
+            Thread-safe asynchronous queue for copy requests.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Queue.CopyRequest">
+            <summary>
+            Represents a scheduled copy action for a specific file and target.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Watchers.FileLockDetector">
+            <summary>
+            Utility responsible for waiting until a file is no longer locked by the producing process.
+            </summary>
+        </member>
+        <member name="M:FileRelay.Core.Watchers.FileLockDetector.WaitForFileReadyAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Waits until a file can be opened with exclusive access which indicates that the write operation finished.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Watchers.SourceWatcher">
+            <summary>
+            Manages a <see cref="T:System.IO.FileSystemWatcher"/> for a single source directory.
+            </summary>
+        </member>
+        <member name="T:FileRelay.Core.Watchers.WatcherCoordinator">
+            <summary>
+            Central registry for all <see cref="T:FileRelay.Core.Watchers.SourceWatcher"/> instances.
+            </summary>
+        </member>
+    </members>
+</doc>
