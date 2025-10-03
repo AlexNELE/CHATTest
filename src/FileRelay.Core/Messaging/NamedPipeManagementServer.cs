@@ -1,5 +1,6 @@
 using System;
 using System.IO.Pipes;
+using System.IO.Pipes.AccessControl;
 using System.Text;
 using System.Text.Json;
 using System.Threading;
@@ -8,6 +9,8 @@ using FileRelay.Core.Configuration;
 using FileRelay.Core.Queue;
 using FileRelay.Core.Watchers;
 using Microsoft.Extensions.Logging;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace FileRelay.Core.Messaging;
 
@@ -42,7 +45,7 @@ public sealed class NamedPipeManagementServer : IAsyncDisposable
         {
             try
             {
-                await using var server = new NamedPipeServerStream(_pipeName, PipeDirection.InOut, 10, PipeTransmissionMode.Byte, PipeOptions.Asynchronous);
+                await using var server = CreatePipeServer();
                 await server.WaitForConnectionAsync(cancellationToken).ConfigureAwait(false);
 
                 using var reader = new StreamReader(server, Encoding.UTF8, false, leaveOpen: true);
@@ -135,5 +138,31 @@ public sealed class NamedPipeManagementServer : IAsyncDisposable
         _cts.Cancel();
         await _listenerTask.ConfigureAwait(false);
         _cts.Dispose();
+    }
+
+    private NamedPipeServerStream CreatePipeServer()
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            try
+            {
+                var pipeSecurity = new PipeSecurity();
+                pipeSecurity.AddAccessRule(new PipeAccessRule(new SecurityIdentifier(WellKnownSidType.AuthenticatedUserSid, null),
+                    PipeAccessRights.ReadWrite | PipeAccessRights.CreateNewInstance, AccessControlType.Allow));
+                pipeSecurity.AddAccessRule(new PipeAccessRule(new SecurityIdentifier(WellKnownSidType.BuiltinAdministratorsSid, null),
+                    PipeAccessRights.FullControl, AccessControlType.Allow));
+                pipeSecurity.AddAccessRule(new PipeAccessRule(new SecurityIdentifier(WellKnownSidType.LocalSystemSid, null),
+                    PipeAccessRights.FullControl, AccessControlType.Allow));
+
+                return NamedPipeServerStreamAcl.Create(_pipeName, PipeDirection.InOut, 10, PipeTransmissionMode.Byte, PipeOptions.Asynchronous,
+                    0, 0, pipeSecurity);
+            }
+            catch (Exception ex) when (ex is PlatformNotSupportedException || ex is UnauthorizedAccessException || ex is NotSupportedException || ex is System.IO.IOException)
+            {
+                _logger.LogWarning(ex, "Falling back to default pipe security for {PipeName}", _pipeName);
+            }
+        }
+
+        return new NamedPipeServerStream(_pipeName, PipeDirection.InOut, 10, PipeTransmissionMode.Byte, PipeOptions.Asynchronous);
     }
 }

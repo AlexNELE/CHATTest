@@ -378,7 +378,6 @@ public sealed class CopyWorker
         }
 
         if (LocalHostNames.Value.Contains(host))
-        if (IPAddress.TryParse(host, out var address) && IPAddress.IsLoopback(address))
         {
             return true;
         }
@@ -401,10 +400,6 @@ public sealed class CopyWorker
     private static bool IsLocalAddress(IPAddress address)
     {
         if (IPAddress.IsLoopback(address))
-        var machineName = Environment.MachineName;
-        if (!string.IsNullOrWhiteSpace(machineName) &&
-            (host.Equals(machineName, StringComparison.OrdinalIgnoreCase) ||
-             host.StartsWith(machineName + ".", StringComparison.OrdinalIgnoreCase)))
         {
             return true;
         }
@@ -501,6 +496,5 @@ public sealed class CopyWorker
         result.Add(IPAddress.IPv6Loopback);
 
         return result;
-        return false;
     }
 }
