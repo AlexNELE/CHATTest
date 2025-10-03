@@ -48,7 +48,15 @@ public sealed class ConfigurationService
             if (!File.Exists(_configurationFile))
             {
                 _logger.LogWarning("Configuration file {File} does not exist. Using defaults.", _configurationFile);
-                return GetCurrent();
+
+                var defaults = new AppConfiguration();
+                lock (_sync)
+                {
+                    _current = defaults;
+                }
+
+                await SaveAsync(defaults).ConfigureAwait(false);
+                return defaults;
             }
 
             await using var stream = File.OpenRead(_configurationFile);
@@ -69,7 +77,11 @@ public sealed class ConfigurationService
 
     public async Task SaveAsync(AppConfiguration configuration)
     {
-        Directory.CreateDirectory(Path.GetDirectoryName(_configurationFile)!);
+        var directory = Path.GetDirectoryName(_configurationFile);
+        if (!string.IsNullOrEmpty(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
         await using var stream = File.Create(_configurationFile);
         await JsonSerializer.SerializeAsync(stream, configuration, _serializerOptions).ConfigureAwait(false);
         lock (_sync)
