@@ -171,9 +171,10 @@ public partial class MainViewModel : ObservableObject
     {
         Sources.Clear();
         var credentialNames = _configuration.Credentials.ToDictionary(c => c.Id, c => $"{c.Domain}\\{c.Username}");
+        var statusSources = status?.Sources ?? Enumerable.Empty<SourceStatus>();
         foreach (var source in _configuration.Sources)
         {
-            var statusItem = status?.Sources.FirstOrDefault(s => s.Id == source.Id);
+            var statusItem = statusSources.FirstOrDefault(s => s.Id == source.Id);
             var vm = SourceItemViewModel.FromConfiguration(source, statusItem?.LastActivityUtc, statusItem?.TargetCount ?? 0);
             foreach (var target in vm.Targets)
             {
