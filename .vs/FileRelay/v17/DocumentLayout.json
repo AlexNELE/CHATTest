@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E9D2A831-31EC-4D12-AB2E-C4301358FA55}|src\\FileRelay.ServiceHost\\FileRelay.ServiceHost.csproj|c:\\users\\aneu0\\source\\repos\\filewatcher\\chattest\\src\\filerelay.servicehost\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9D2A831-31EC-4D12-AB2E-C4301358FA55}|src\\FileRelay.ServiceHost\\FileRelay.ServiceHost.csproj|solutionrelative:src\\filerelay.servicehost\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|c:\\users\\aneu0\\source\\repos\\filewatcher\\chattest\\src\\filerelay.core\\messaging\\namedpipemanagementserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|solutionrelative:src\\filerelay.core\\messaging\\namedpipemanagementserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -51,20 +55,33 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Worker.cs",
+              "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.ServiceHost\\Worker.cs",
+              "RelativeDocumentMoniker": "src\\FileRelay.ServiceHost\\Worker.cs",
+              "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.ServiceHost\\Worker.cs",
+              "RelativeToolTip": "src\\FileRelay.ServiceHost\\Worker.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAlwCsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-03T12:57:38.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "NamedPipeManagementServer.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs",
               "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs",
               "RelativeToolTip": "src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T12:39:41.949Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FileRelay.Core",
+              "DocumentIndex": 3,
+              "Title": "FileRelay.Core.csproj",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\FileRelay.Core.csproj",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\FileRelay.Core.csproj",
               "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\FileRelay.Core.csproj",
@@ -76,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ManagementClient.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.UI\\Services\\ManagementClient.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.UI\\Services\\ManagementClient.cs",
@@ -89,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "RetryPolicyTests.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\tests\\FileRelay.Tests\\RetryPolicyTests.cs",
               "RelativeDocumentMoniker": "tests\\FileRelay.Tests\\RetryPolicyTests.cs",
@@ -102,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "FileLockDetectorTests.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\tests\\FileRelay.Tests\\FileLockDetectorTests.cs",
               "RelativeDocumentMoniker": "tests\\FileRelay.Tests\\FileLockDetectorTests.cs",
@@ -115,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "CopyQueueTests.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\tests\\FileRelay.Tests\\CopyQueueTests.cs",
               "RelativeDocumentMoniker": "tests\\FileRelay.Tests\\CopyQueueTests.cs",
@@ -128,7 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "CredentialProtector.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Credentials\\CredentialProtector.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\Credentials\\CredentialProtector.cs",
@@ -141,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "NetworkConnection.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Copy\\NetworkConnection.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\Copy\\NetworkConnection.cs",
@@ -154,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CopyWorker.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Copy\\CopyWorker.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\Copy\\CopyWorker.cs",

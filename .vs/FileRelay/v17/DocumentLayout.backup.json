@@ -64,7 +64,7 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FileRelay.Core",
+              "Title": "FileRelay.Core.csproj",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\FileRelay.Core.csproj",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\FileRelay.Core.csproj",
               "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\FileRelay.Core.csproj",
