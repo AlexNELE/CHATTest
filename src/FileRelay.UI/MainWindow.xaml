@@ -25,6 +25,7 @@
                 <Button Content="Aktualisieren" Command="{Binding RefreshCommand}" />
                 <Separator />
                 <Button Content="Export Logs" Command="{Binding ExportLogsCommand}" />
+                <Button Content="Credentials" Command="{Binding ManageCredentialsCommand}" Margin="8,0,0,0" />
             </ToolBar>
         </ToolBarTray>
 

@@ -11,6 +11,12 @@ public partial class SourceEditorWindow : Window
 
     private void OnSaveClick(object sender, RoutedEventArgs e)
     {
+        if (DataContext is SourceEditorViewModel viewModel && !viewModel.TryValidateTargets(out var errorMessage))
+        {
+            MessageBox.Show(this, errorMessage, "Ungültige Konfiguration", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+
         DialogResult = true;
         Close();
     }
