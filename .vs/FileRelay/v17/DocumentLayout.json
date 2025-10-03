@@ -60,7 +60,7 @@
               "RelativeDocumentMoniker": "src\\FileRelay.ServiceHost\\Worker.cs",
               "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.ServiceHost\\Worker.cs",
               "RelativeToolTip": "src\\FileRelay.ServiceHost\\Worker.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAlwCsAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAlwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T12:57:38.913Z",
               "EditorCaption": ""
@@ -75,8 +75,7 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T12:39:41.949Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T12:39:41.949Z"
             },
             {
               "$type": "Document",
@@ -88,8 +87,7 @@
               "RelativeToolTip": "src\\FileRelay.Core\\FileRelay.Core.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-03T12:38:19.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T12:38:19.252Z"
             },
             {
               "$type": "Document",
@@ -101,8 +99,7 @@
               "RelativeToolTip": "src\\FileRelay.UI\\Services\\ManagementClient.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAawDQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T09:40:55.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T09:40:55.083Z"
             },
             {
               "$type": "Document",
@@ -114,8 +111,7 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\RetryPolicyTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:28:10.121Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:28:10.121Z"
             },
             {
               "$type": "Document",
@@ -127,8 +123,7 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\FileLockDetectorTests.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAlwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:27:13.829Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:27:13.829Z"
             },
             {
               "$type": "Document",
@@ -140,8 +135,7 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\CopyQueueTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:27:03.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:27:03.061Z"
             },
             {
               "$type": "Document",
@@ -153,8 +147,7 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Credentials\\CredentialProtector.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:23:48.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:23:48.235Z"
             },
             {
               "$type": "Document",
@@ -166,8 +159,7 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Copy\\NetworkConnection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:23:06.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:23:06.452Z"
             },
             {
               "$type": "Document",
@@ -179,8 +171,7 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Copy\\CopyWorker.cs",
               "ViewState": "AgIAAIwAAAAAAAAAAAD4v5YAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:21:57.011Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T08:21:57.011Z"
             }
           ]
         }
