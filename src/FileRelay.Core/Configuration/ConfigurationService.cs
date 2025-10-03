@@ -48,7 +48,9 @@ public sealed class ConfigurationService
             if (!File.Exists(_configurationFile))
             {
                 _logger.LogWarning("Configuration file {File} does not exist. Using defaults.", _configurationFile);
-                return GetCurrent();
+                var defaults = GetCurrent();
+                await SaveAsync(defaults).ConfigureAwait(false);
+                return defaults;
             }
 
             await using var stream = File.OpenRead(_configurationFile);
