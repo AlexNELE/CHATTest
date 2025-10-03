@@ -87,6 +87,10 @@
               "target": "Package",
               "version": "[17.0.24, )"
             },
+            "System.IO.Pipes.AccessControl": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "System.Security.Cryptography.ProtectedData": {
               "target": "Package",
               "version": "[9.0.9, )"
@@ -200,6 +204,10 @@
             "System.IO.Abstractions.TestingHelpers": {
               "target": "Package",
               "version": "[17.0.24, )"
+            },
+            "System.IO.Pipes.AccessControl": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             },
             "System.Security.Cryptography.ProtectedData": {
               "target": "Package",

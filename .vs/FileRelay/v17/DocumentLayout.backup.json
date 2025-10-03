@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|c:\\users\\aneu0\\source\\repos\\filewatcher\\chattest\\src\\filerelay.core\\messaging\\namedpipemanagementserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|solutionrelative:src\\filerelay.core\\messaging\\namedpipemanagementserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|c:\\users\\aneu0\\source\\repos\\filewatcher\\chattest\\src\\filerelay.core\\copy\\copyworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|solutionrelative:src\\filerelay.core\\copy\\copyworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|c:\\users\\aneu0\\source\\repos\\filewatcher\\chattest\\src\\filerelay.core\\filerelay.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|solutionrelative:src\\filerelay.core\\filerelay.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CE8FEED0-6E06-438E-ADA7-4A21368872EA}|src\\FileRelay.UI\\FileRelay.UI.csproj|c:\\users\\aneu0\\source\\repos\\filewatcher\\chattest\\src\\filerelay.ui\\services\\managementclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE8FEED0-6E06-438E-ADA7-4A21368872EA}|src\\FileRelay.UI\\FileRelay.UI.csproj|solutionrelative:src\\filerelay.ui\\services\\managementclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|c:\\users\\aneu0\\source\\repos\\filewatcher\\chattest\\src\\filerelay.core\\copy\\networkconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|solutionrelative:src\\filerelay.core\\copy\\networkconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|c:\\users\\aneu0\\source\\repos\\filewatcher\\chattest\\src\\filerelay.core\\copy\\copyworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{203C0E94-23B6-4A29-8038-77F46DCDEA34}|src\\FileRelay.Core\\FileRelay.Core.csproj|solutionrelative:src\\filerelay.core\\copy\\copyworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,6 +51,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "NamedPipeManagementServer.cs",
+              "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs",
+              "RelativeDocumentMoniker": "src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs",
+              "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs*",
+              "RelativeToolTip": "src\\FileRelay.Core\\Messaging\\NamedPipeManagementServer.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-03T12:39:41.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FileRelay.Core",
+              "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\FileRelay.Core.csproj",
+              "RelativeDocumentMoniker": "src\\FileRelay.Core\\FileRelay.Core.csproj",
+              "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\FileRelay.Core.csproj",
+              "RelativeToolTip": "src\\FileRelay.Core\\FileRelay.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-03T12:38:19.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ManagementClient.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.UI\\Services\\ManagementClient.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.UI\\Services\\ManagementClient.cs",
@@ -55,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "RetryPolicyTests.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\tests\\FileRelay.Tests\\RetryPolicyTests.cs",
               "RelativeDocumentMoniker": "tests\\FileRelay.Tests\\RetryPolicyTests.cs",
@@ -63,11 +97,12 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\RetryPolicyTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:28:10.121Z"
+              "WhenOpened": "2025-10-03T08:28:10.121Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "FileLockDetectorTests.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\tests\\FileRelay.Tests\\FileLockDetectorTests.cs",
               "RelativeDocumentMoniker": "tests\\FileRelay.Tests\\FileLockDetectorTests.cs",
@@ -75,11 +110,12 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\FileLockDetectorTests.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAlwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:27:13.829Z"
+              "WhenOpened": "2025-10-03T08:27:13.829Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "CopyQueueTests.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\tests\\FileRelay.Tests\\CopyQueueTests.cs",
               "RelativeDocumentMoniker": "tests\\FileRelay.Tests\\CopyQueueTests.cs",
@@ -87,11 +123,12 @@
               "RelativeToolTip": "tests\\FileRelay.Tests\\CopyQueueTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:27:03.061Z"
+              "WhenOpened": "2025-10-03T08:27:03.061Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "CredentialProtector.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Credentials\\CredentialProtector.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\Credentials\\CredentialProtector.cs",
@@ -99,11 +136,12 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Credentials\\CredentialProtector.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:23:48.235Z"
+              "WhenOpened": "2025-10-03T08:23:48.235Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "NetworkConnection.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Copy\\NetworkConnection.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\Copy\\NetworkConnection.cs",
@@ -111,19 +149,21 @@
               "RelativeToolTip": "src\\FileRelay.Core\\Copy\\NetworkConnection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:23:06.452Z"
+              "WhenOpened": "2025-10-03T08:23:06.452Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "CopyWorker.cs",
               "DocumentMoniker": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Copy\\CopyWorker.cs",
               "RelativeDocumentMoniker": "src\\FileRelay.Core\\Copy\\CopyWorker.cs",
               "ToolTip": "C:\\Users\\aneu0\\source\\repos\\Filewatcher\\CHATTest\\src\\FileRelay.Core\\Copy\\CopyWorker.cs",
               "RelativeToolTip": "src\\FileRelay.Core\\Copy\\CopyWorker.cs",
-              "ViewState": "AgIAANMAAAAAAAAAAAAAwOAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIwAAAAAAAAAAAD4v5YAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:21:57.011Z"
+              "WhenOpened": "2025-10-03T08:21:57.011Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -148,16 +148,6 @@ public sealed class CopyWorker
 
             await CopyFileAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
 
-
-            var destinationPath = ResolveDestinationPath(request);
-            var destinationDirectory = _fileSystem.Path.GetDirectoryName(destinationPath)!;
-            _fileSystem.Directory.CreateDirectory(destinationDirectory);
-
-            var finalPath = HandleConflict(destinationPath, request.Target.ConflictMode);
-            var tempFile = _fileSystem.Path.Combine(destinationDirectory, $".{_fileSystem.Path.GetFileName(finalPath)}.{Guid.NewGuid():N}.tmp");
-
-            await CopyFileAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
-
             if (request.Target.VerifyChecksum)
             {
                 await VerifyChecksumAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
