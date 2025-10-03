@@ -1,4 +1,7 @@
 using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using FileRelay.Core.Configuration;
 using FileRelay.Core.Copy;
 using FileRelay.Core.Credentials;
@@ -20,7 +23,6 @@ public sealed class Worker : BackgroundService
     private readonly ILoggerFactory _loggerFactory;
     private readonly ILogger<Worker> _logger;
     private readonly WatcherCoordinator _coordinator;
-    private readonly IServiceProvider _services;
 
     private CredentialStore? _credentialStore;
     private CopyWorker? _copyWorker;
@@ -29,7 +31,7 @@ public sealed class Worker : BackgroundService
     private readonly GlobalOptions _options = new();
     private string _currentPipeName = "FileRelay";
 
-    public Worker(ConfigurationService configurationService, CopyQueue queue, FileLockDetector lockDetector, IFileSystem fileSystem, ILoggerFactory loggerFactory, ILogger<Worker> logger, WatcherCoordinator coordinator, IServiceProvider services)
+    public Worker(ConfigurationService configurationService, CopyQueue queue, FileLockDetector lockDetector, IFileSystem fileSystem, ILoggerFactory loggerFactory, ILogger<Worker> logger, WatcherCoordinator coordinator)
     {
         _configurationService = configurationService;
         _queue = queue;
@@ -38,7 +40,6 @@ public sealed class Worker : BackgroundService
         _loggerFactory = loggerFactory;
         _logger = logger;
         _coordinator = coordinator;
-        _services = services;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -108,6 +109,19 @@ public sealed class Worker : BackgroundService
     public override async Task StopAsync(CancellationToken cancellationToken)
     {
         await base.StopAsync(cancellationToken).ConfigureAwait(false);
+        _queue.Complete();
+        if (_copyTask != null)
+        {
+            try
+            {
+                await _copyTask.ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+            {
+                // ignore cancellation during shutdown
+            }
+        }
+
         if (_managementServer != null)
         {
             await _managementServer.DisposeAsync().ConfigureAwait(false);

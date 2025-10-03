@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using FileRelay.Core.Credentials;
@@ -33,10 +34,11 @@ internal sealed class NetworkConnection : IDisposable
             ? _credential.Username
             : $"{_credential.Domain}\\{_credential.Username}";
 
-        var password = _credential.Password.ToUnsecureString();
+        var passwordHandle = IntPtr.Zero;
         try
         {
-            var result = WNetAddConnection2(ref resource, password, userName, 0);
+            passwordHandle = Marshal.SecureStringToGlobalAllocUnicode(_credential.Password);
+            var result = WNetAddConnection2(ref resource, passwordHandle, userName, 0);
             if (result != 0 && result != ErrorAlreadyAssigned)
             {
                 throw new Win32Exception(result, $"Failed to connect to {_networkPath}");
@@ -44,7 +46,10 @@ internal sealed class NetworkConnection : IDisposable
         }
         finally
         {
-            password.AsSpan().Clear();
+            if (passwordHandle != IntPtr.Zero)
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(passwordHandle);
+            }
         }
     }
 
@@ -65,7 +70,7 @@ internal sealed class NetworkConnection : IDisposable
     private const int ErrorAlreadyAssigned = 85;
 
     [DllImport("mpr.dll", CharSet = CharSet.Unicode)]
-    private static extern int WNetAddConnection2(ref NetResource lpNetResource, string? lpPassword, string? lpUserName, int dwFlags);
+    private static extern int WNetAddConnection2(ref NetResource lpNetResource, IntPtr lpPassword, string? lpUserName, int dwFlags);
 
     [DllImport("mpr.dll", CharSet = CharSet.Unicode)]
     private static extern int WNetCancelConnection2(string lpName, int dwFlags, bool fForce);
@@ -107,30 +112,5 @@ internal sealed class NetworkConnection : IDisposable
         Share = 3,
         File = 4,
         Group = 5
-    }
-}
-
-internal static class SecureStringMarshalExtensions
-{
-    public static string ToUnsecureString(this SecureString secure)
-    {
-        if (secure == null)
-        {
-            return string.Empty;
-        }
-
-        var unmanaged = IntPtr.Zero;
-        try
-        {
-            unmanaged = Marshal.SecureStringToGlobalAllocUnicode(secure);
-            return Marshal.PtrToStringUni(unmanaged) ?? string.Empty;
-        }
-        finally
-        {
-            if (unmanaged != IntPtr.Zero)
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanaged);
-            }
-        }
     }
 }

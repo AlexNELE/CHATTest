@@ -24,7 +24,13 @@ public sealed class CopyWorker
     private readonly SemaphoreSlim _globalSemaphore;
     private readonly ConcurrentDictionary<Guid, SemaphoreSlim> _targetSemaphores = new();
 
-    public CopyWorker(CopyQueue queue, CredentialStore credentialStore, IFileSystem fileSystem, FileLockDetector lockDetector, ILogger<CopyWorker> logger, GlobalOptions options)
+    public CopyWorker(
+        CopyQueue queue,
+        CredentialStore credentialStore,
+        IFileSystem fileSystem,
+        FileLockDetector lockDetector,
+        ILogger<CopyWorker> logger,
+        GlobalOptions options)
     {
         _queue = queue;
         _credentialStore = credentialStore;
