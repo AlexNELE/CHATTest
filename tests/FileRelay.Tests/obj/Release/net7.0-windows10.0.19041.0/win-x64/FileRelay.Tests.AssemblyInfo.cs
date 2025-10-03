@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileRelay.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dc2393e4deafabc0dfc9fc553c941442ed1a7a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2572d5929615122f9b419e7e248228c52bc5cd3")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileRelay.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileRelay.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
