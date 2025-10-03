@@ -9,10 +9,10 @@ namespace FileRelay.UI.Windows;
 
 public partial class SourceEditorViewModel : ObservableObject
 {
-    public SourceEditorViewModel(SourceItemViewModel source, IEnumerable<CredentialReference> credentials)
+    public SourceEditorViewModel(SourceItemViewModel source, ObservableCollection<CredentialReference> credentials)
     {
         Source = source;
-        Credentials = new ObservableCollection<CredentialReference>(credentials);
+        Credentials = credentials;
         SelectedTarget = Source.Targets.FirstOrDefault();
     }
 
