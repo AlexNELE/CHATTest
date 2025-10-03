@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using FileRelay.Core.Configuration;
@@ -109,59 +110,65 @@ public sealed class CopyWorker
             return TransferResult.Skipped(request, "SourceMissing");
         }
 
-        var credential = _credentialStore.TryGetDomainCredential(request.Target.CredentialId);
-        if (credential is null)
+        var requiresCredential = RequiresNetworkCredential(request.Target);
+        if (requiresCredential && request.Target.CredentialId == Guid.Empty)
         {
             return TransferResult.AuthError(request, new InvalidOperationException("Credential missing"));
         }
 
-        using (credential)
+        DomainCredential? credential = null;
+        NetworkConnection? connection = null;
+
+        try
         {
-            NetworkConnection? connection = null;
-            try
+            if (requiresCredential)
             {
-                if (IsUncPath(request.Target.DestinationPath))
+                credential = _credentialStore.TryGetDomainCredential(request.Target.CredentialId);
+                if (credential is null)
                 {
-                    connection = new NetworkConnection(GetShareRoot(request.Target.DestinationPath), credential);
-                    connection.Connect();
+                    return TransferResult.AuthError(request, new InvalidOperationException("Credential missing"));
                 }
 
-                var destinationPath = ResolveDestinationPath(request);
-                var destinationDirectory = _fileSystem.Path.GetDirectoryName(destinationPath)!;
-                _fileSystem.Directory.CreateDirectory(destinationDirectory);
-
-                var finalPath = HandleConflict(destinationPath, request.Target.ConflictMode);
-                var tempFile = _fileSystem.Path.Combine(destinationDirectory, $".{_fileSystem.Path.GetFileName(finalPath)}.{Guid.NewGuid():N}.tmp");
-
-                await CopyFileAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
-
-                if (request.Target.VerifyChecksum)
-                {
-                    await VerifyChecksumAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
-                }
-                else
-                {
-                    VerifySize(request.SourceFile, tempFile);
-                }
-
-                FinalizeCopy(tempFile, finalPath, request.Target.ConflictMode);
-
-                if (request.Source.DeleteAfterCopy)
-                {
-                    DeleteSourceFile(request.SourceFile, request.Source.UseRecycleBin);
-                }
-
-                _logger.LogInformation("Copied {Source} to {Destination}", request.SourceFile, finalPath);
-                return TransferResult.Ok(request);
+                connection = new NetworkConnection(GetShareRoot(request.Target.DestinationPath), credential);
+                connection.Connect();
             }
-            catch (Exception ex)
+
+            var destinationPath = ResolveDestinationPath(request);
+            var destinationDirectory = _fileSystem.Path.GetDirectoryName(destinationPath)!;
+            _fileSystem.Directory.CreateDirectory(destinationDirectory);
+
+            var finalPath = HandleConflict(destinationPath, request.Target.ConflictMode);
+            var tempFile = _fileSystem.Path.Combine(destinationDirectory, $".{_fileSystem.Path.GetFileName(finalPath)}.{Guid.NewGuid():N}.tmp");
+
+            await CopyFileAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
+
+            if (request.Target.VerifyChecksum)
             {
-                return TransferResult.Failure(request, ex);
+                await VerifyChecksumAsync(request.SourceFile, tempFile, cancellationToken).ConfigureAwait(false);
             }
-            finally
+            else
             {
-                connection?.Dispose();
+                VerifySize(request.SourceFile, tempFile);
             }
+
+            FinalizeCopy(tempFile, finalPath, request.Target.ConflictMode);
+
+            if (request.Source.DeleteAfterCopy)
+            {
+                DeleteSourceFile(request.SourceFile, request.Source.UseRecycleBin);
+            }
+
+            _logger.LogInformation("Copied {Source} to {Destination}", request.SourceFile, finalPath);
+            return TransferResult.Ok(request);
+        }
+        catch (Exception ex)
+        {
+            return TransferResult.Failure(request, ex);
+        }
+        finally
+        {
+            connection?.Dispose();
+            credential?.Dispose();
         }
     }
 
@@ -292,4 +299,65 @@ public sealed class CopyWorker
     }
 
     private static bool IsUncPath(string path) => path.StartsWith(@"\\");
+
+    private static bool RequiresNetworkCredential(TargetConfiguration target)
+    {
+        if (!IsUncPath(target.DestinationPath))
+        {
+            return false;
+        }
+
+        var host = GetUncHost(target.DestinationPath);
+        if (string.IsNullOrWhiteSpace(host))
+        {
+            return false;
+        }
+
+        if (IsLocalHost(host))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static string? GetUncHost(string path)
+    {
+        if (!IsUncPath(path))
+        {
+            return null;
+        }
+
+        var trimmed = path.TrimStart('\\');
+        var separatorIndex = trimmed.IndexOf('\\');
+        return separatorIndex < 0 ? trimmed : trimmed[..separatorIndex];
+    }
+
+    private static bool IsLocalHost(string host)
+    {
+        if (string.IsNullOrWhiteSpace(host))
+        {
+            return false;
+        }
+
+        if (host.Equals("localhost", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        if (IPAddress.TryParse(host, out var address) && IPAddress.IsLoopback(address))
+        {
+            return true;
+        }
+
+        var machineName = Environment.MachineName;
+        if (!string.IsNullOrWhiteSpace(machineName) &&
+            (host.Equals(machineName, StringComparison.OrdinalIgnoreCase) ||
+             host.StartsWith(machineName + ".", StringComparison.OrdinalIgnoreCase)))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
