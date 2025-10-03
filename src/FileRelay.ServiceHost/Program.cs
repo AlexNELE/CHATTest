@@ -8,6 +8,7 @@ using FileRelay.Core.Watchers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Serilog;
 
 namespace FileRelay.ServiceHost;
@@ -25,14 +26,15 @@ public static class Program
 
         try
         {
+            var configurationDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "FileRelay");
+            var configurationFile = Path.Combine(configurationDirectory, "config.json");
+            await EnsureConfigurationFileExistsAsync(configurationFile).ConfigureAwait(false);
+
             var host = Host.CreateDefaultBuilder(args)
                 .UseWindowsService()
                 .UseSerilog()
                 .ConfigureServices((context, services) =>
                 {
-                    var configurationDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "FileRelay");
-                    var configurationFile = Path.Combine(configurationDirectory, "config.json");
-
                     services.AddSingleton<IFileSystem, FileSystem>();
                     services.AddSingleton<CopyQueue>();
                     services.AddSingleton(sp => new FileLockDetector(sp.GetRequiredService<IFileSystem>()));
@@ -48,5 +50,23 @@ public static class Program
         {
             Log.CloseAndFlush();
         }
+    }
+
+    private static async Task EnsureConfigurationFileExistsAsync(string configurationFile)
+    {
+        if (File.Exists(configurationFile))
+        {
+            return;
+        }
+
+        var directory = Path.GetDirectoryName(configurationFile);
+        if (!string.IsNullOrEmpty(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
+        Log.Information("Configuration file {File} was missing. Creating default configuration.", configurationFile);
+        var bootstrapper = new ConfigurationService(configurationFile, NullLogger<ConfigurationService>.Instance);
+        await bootstrapper.SaveAsync(new AppConfiguration()).ConfigureAwait(false);
     }
 }
