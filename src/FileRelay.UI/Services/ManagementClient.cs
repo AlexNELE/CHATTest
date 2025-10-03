@@ -1,3 +1,4 @@
+using System.IO;
 using System.IO.Pipes;
 using System.Text;
 using System.Text.Json;
@@ -53,7 +54,7 @@ public sealed class ManagementClient : IManagementClient
             using var pipe = new NamedPipeClientStream(".", _pipeName, PipeDirection.InOut, PipeOptions.Asynchronous);
             await pipe.ConnectAsync(2000, cancellationToken).ConfigureAwait(false);
             await using var writer = new StreamWriter(pipe, Encoding.UTF8, bufferSize: 1024, leaveOpen: true) { AutoFlush = true };
-            await using var reader = new StreamReader(pipe, Encoding.UTF8, detectEncodingFromByteOrderMarks: false, bufferSize: 1024, leaveOpen: true);
+            using var reader = new StreamReader(pipe, Encoding.UTF8, detectEncodingFromByteOrderMarks: false, bufferSize: 1024, leaveOpen: true);
             var json = JsonSerializer.Serialize(request);
             await writer.WriteLineAsync(json).ConfigureAwait(false);
             return await reader.ReadLineAsync().ConfigureAwait(false);

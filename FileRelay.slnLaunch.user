@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "Neues Profil",
+    "Projects": [
+      {
+        "Path": "src\\FileRelay.Core\\FileRelay.Core.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\FileRelay.UI\\FileRelay.UI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\FileRelay.ServiceHost\\FileRelay.ServiceHost.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
