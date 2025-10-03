@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -64,6 +65,27 @@ public class CopyWorkerTests
 
         Assert.False(result.Success);
         Assert.Equal("AuthError", result.Status);
+    }
+
+    [Fact]
+    public void RequiresNetworkCredentialTreatsRegisteredLocalIpAsLocal()
+    {
+        var type = typeof(CopyWorker);
+        var addressesField = type.GetField("LocalAddresses", BindingFlags.NonPublic | BindingFlags.Static)!;
+        var lazy = (Lazy<HashSet<IPAddress>>)addressesField.GetValue(null)!;
+        var addresses = lazy.Value;
+        var customAddress = IPAddress.Parse("192.0.2.55");
+        addresses.Add(customAddress);
+
+        var target = new TargetConfiguration
+        {
+            DestinationPath = $"\\\\{customAddress}\\share"
+        };
+
+        var requires = (bool)type.GetMethod("RequiresNetworkCredential", BindingFlags.NonPublic | BindingFlags.Static)!
+            .Invoke(null, new object[] { target })!;
+
+        Assert.False(requires);
     }
 
     private static CopyWorker CreateWorker(IFileSystem fileSystem, CredentialStore credentialStore)
