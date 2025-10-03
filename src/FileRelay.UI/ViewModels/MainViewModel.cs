@@ -55,8 +55,20 @@ public partial class MainViewModel : ObservableObject
             _configuration = configuration;
         }
 
-        Application.Current?.Dispatcher.Invoke(() => UpdateSources(status));
-        LoadLogs();
+        var dispatcher = Application.Current?.Dispatcher;
+        if (dispatcher?.CheckAccess() == true)
+        {
+            UpdateSources(status);
+            LoadLogs();
+        }
+        else
+        {
+            dispatcher?.Invoke(() =>
+            {
+                UpdateSources(status);
+                LoadLogs();
+            });
+        }
     }
 
     [RelayCommand]
@@ -221,7 +233,15 @@ public partial class MainViewModel : ObservableObject
 
     partial void OnSelectedLogLevelFilterChanged(string value)
     {
-        LoadLogs();
+        var dispatcher = Application.Current?.Dispatcher;
+        if (dispatcher?.CheckAccess() == true)
+        {
+            LoadLogs();
+        }
+        else
+        {
+            dispatcher?.Invoke(LoadLogs);
+        }
     }
 
     private static bool TryParseLog(string line, out LogEntryViewModel entry)
