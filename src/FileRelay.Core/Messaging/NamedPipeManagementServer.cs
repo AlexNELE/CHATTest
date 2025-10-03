@@ -47,11 +47,14 @@ public sealed class NamedPipeManagementServer : IAsyncDisposable
                 await using var server = CreatePipeServer();
                 await server.WaitForConnectionAsync(cancellationToken).ConfigureAwait(false);
 
-                using var reader = new StreamReader(server, Encoding.UTF8, false, leaveOpen: true);
-                using var writer = new StreamWriter(server, Encoding.UTF8, bufferSize: 1024, leaveOpen: true) { AutoFlush = true };
-
                 try
                 {
+                    using var reader = new StreamReader(server, Encoding.UTF8, false, leaveOpen: true);
+                    using var writer = new StreamWriter(server, Encoding.UTF8, bufferSize: 1024, leaveOpen: true)
+                    {
+                        AutoFlush = true
+                    };
+
                     var requestJson = await reader.ReadLineAsync().ConfigureAwait(false);
                     if (requestJson is null)
                     {
